@@ -10,11 +10,13 @@ before_install:
 install:
   - cabal-1.18 update
   - patch $HOME/.cabal/config < config.patch
+
+script:
   - cabal-1.18 update
   - ghc-pkg list
   - cabal-1.18 install progression-0.5.0.3
   - ghc-pkg list
-
+ 
 matrix:
   allow_failures:
    - env: GHCVER=head
